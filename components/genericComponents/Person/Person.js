@@ -4,11 +4,11 @@ import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 
 export default class Person extends Component {
 
-	constructor(props) {
+	constructor(props) { /*first thing that's being executed*/
 		super(props);
 	}
 
-	render() {
+	render() { /*inside blok there is everything that comes from storyblock*/
 		return (
 			<>
 				<div {...storyblokEditable(this.props.blok)} className={css["wrapper"]}>

@@ -1,5 +1,5 @@
 ﻿import React, { Component } from "react";
-import css from "./Person.module.scss";
+import css from "./Person.module.scss"; /* scss is more powerful and easier to use than css, we are allowed to use it via next.js */
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 
 export default class Person extends Component {
@@ -8,11 +8,11 @@ export default class Person extends Component {
 		super(props);
 	}
 
-	render() { /*inside blok there is everything that comes from storyblock*/
-		return (
-			<>
+	render() { /*what is used to show a person*/
+		return ( 
+			<> 
 				<div {...storyblokEditable(this.props.blok)} className={css["wrapper"]}>
-					<div className={css["content"]}>
+					<div className={css["content"]/* we are using the 'content' class avaiable in the file 'css' imported from ./Person.module.scss*/}> 
 						<div className={[css["box"], css["head"]].join(" ")}>
 							<h1>Resume {this.props.blok.title} {this.props.blok.lastname} {this.props.blok.firstname}</h1>
 						</div>
@@ -26,7 +26,7 @@ export default class Person extends Component {
 						</div>
 						<div className={[css["box"], css["experience"]].join(" ")}>
 							<h2>Experience</h2>
-							{this.props.blok.experiences.map((nestedBlok) => (
+							{this.props.blok.experiences.map((nestedBlok) => ( /* for every thing inside of 'experiences' it's going to load a storyblok component and we are going to hand it in the nestedblok. This is possible thanks to 'pages' files _app.js, [[...slug]].js*/
 								<StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
 							))}
 						</div>
